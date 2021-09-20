@@ -28,7 +28,8 @@ jobs:
         python setup.py build_ext --define CYTHON_TRACE
     - name: Test with pytest
       run: |
-        pytest --cov=./ --cov-report=xml --cov-config=.coveragerc test.py --doctest-cython
+        pytest --cov=./ --cov-report=xml --cov-config=.coveragerc test.py
+        py.test --doctest-cython test.py
     - name: Codecov
       uses: codecov/codecov-action@v2.1.0
       with:
