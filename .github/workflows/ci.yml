@@ -22,15 +22,15 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         pip install codecov
+        pip install pytest-cov
         pip install numpy
         pip install cython
         python setup.py build_ext --define CYTHON_TRACE
     - name: Test with pytest
       run: |
-        pytest test.py
+        pytest --cov=./ test.py
         
-    steps:
-    - uses: actions/checkout@master
+    - name: "Upload coverage to codecov"
     - uses: codecov/codecov-action@v2
       with:
         flags: unittests # optional
