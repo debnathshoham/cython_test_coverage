@@ -25,6 +25,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         pip install codecov
+        pip install numpy
         pip install cython
         python setup.py build_ext --define CYTHON_TRACE
     - name: Lint with flake8
