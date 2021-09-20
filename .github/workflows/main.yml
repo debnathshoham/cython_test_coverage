@@ -14,4 +14,6 @@ runs:
       run: |
         python setup.py build_ext --define CYTHON_TRACE
       shell: bash -l {0}
-      
+
+    - name: Codecov
+      uses: codecov/codecov-action@v2.1.0
