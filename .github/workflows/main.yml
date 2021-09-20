@@ -1,34 +1,17 @@
-name: Example workflow for Codecov
-on: [push]
-jobs:
-  run:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-    env:
-      OS: ${{ matrix.os }}
-      PYTHON: '3.7'
-    steps:
-    - uses: actions/checkout@master
-    - name: Setup Python
-      uses: actions/setup-python@master
-      with:
-        python-version: 3.7
-    - name: Generate coverage report
+name: Build
+description: Rebuilds the C extensions
+runs:
+  using: composite
+  steps:
+
+    - name: Environment Detail
       run: |
-        pip install pytest
-        pip install pytest-cov
-        pytest --cov=./ --cov-report=xml
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v2
-      with:
-        token: '02b0ba1a-100f-4a79-a297-97195030476e'
-        directory: ./coverage/reports/
-        env_vars: OS,PYTHON
-        fail_ci_if_error: true
-        files: ./coverage1.xml,./coverage2.xml
-        flags: unittests
-        name: codecov-umbrella
-        path_to_write_report: ./coverage/codecov_report.txt
-        verbose: true
+        conda info
+        conda list
+      shell: bash -l {0}
+
+    - name: Build Pandas
+      run: |
+        python setup.py build_ext --define CYTHON_TRACE
+      shell: bash -l {0}
+      
