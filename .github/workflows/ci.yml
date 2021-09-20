@@ -30,11 +30,7 @@ jobs:
     - name: Codecov
       uses: codecov/codecov-action@v2.1.0
       with:
-        token: '02b0ba1a-100f-4a79-a297-97195030476e'
-        directory: ./coverage/reports/
-        env_vars: OS,PYTHON\
-        files: ./coverage1.xml,./coverage2.xml
-        flags: unittests
+        token: ${{ secrets.CODECOV_TOKEN }}
         name: codecov-umbrella
         verbose: true
     
