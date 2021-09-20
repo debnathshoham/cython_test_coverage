@@ -26,8 +26,7 @@ jobs:
         python setup.py build_ext --define CYTHON_TRACE
     - name: Test with pytest
       run: |
-        cython  --annotate-coverage coverage.xml  cython_test_coverage/basic_cython.pyx
-        pytest --cov=./ --cov-report=xml test.py
+        pytest --cov=./ --cov-report=xml --cov-config=.coveragerc test.py
     - name: Codecov
       uses: codecov/codecov-action@v2.1.0
       with:
