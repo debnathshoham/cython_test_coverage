@@ -26,7 +26,7 @@ jobs:
         python setup.py build_ext --define CYTHON_TRACE
     - name: Test with pytest
       run: |
-        pytest --cov=./ --cov-report=xml
+        pytest --cov=./ --cov-report=xml test.py
     - name: Codecov
       uses: codecov/codecov-action@v2.1.0
 
