@@ -1,6 +1,6 @@
 name: CI
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -15,6 +15,16 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
+    - name: Install dependencies
+      run: |
+        pip install codecov
+        pip install cython
+        python setup.py build_ext --define CYTHON_TRACE
+    - name: Run unittests
+      run: |
+        cython --annotate-coverage coverage.xml  cython_test_coverage/basic_cython.pyx
+        coverage run test.py
+        coverage xml
 
     steps:
     - uses: actions/checkout@master
