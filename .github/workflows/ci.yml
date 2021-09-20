@@ -23,7 +23,7 @@ jobs:
         pip install pytest-cov
         pip install numpy
         pip install cython
-        python setup.py build_ext --define CYTHON_TRACE
+        python setup.py build_ext --inplace --define CYTHON_TRACE
     - name: Test with pytest
       run: |
         pytest --cov=./ --cov-report=xml --cov-config=.coveragerc test.py
