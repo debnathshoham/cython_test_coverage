@@ -30,8 +30,7 @@ jobs:
       run: |
         pytest --cov=./ test.py
         
-    steps:
-    - uses: actions/checkout@master
+    - name: "Upload coverage to codecov"
     - uses: codecov/codecov-action@v2
       with:
         flags: unittests # optional
