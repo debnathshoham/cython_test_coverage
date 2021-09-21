@@ -1,2 +1,4 @@
-ignore:
-  - "setup.py"
+comment: false
+
+github_checks:
+    annotations: false
