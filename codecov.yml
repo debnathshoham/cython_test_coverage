@@ -1,2 +1,2 @@
 ignore:
-  - "path/to/folder"
+  - "setup.py"
