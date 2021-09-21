@@ -1,2 +1,11 @@
+codecov:
+  branch: master
+  notify:
+    after_n_builds: 10
+comment: false
+
 ignore:
   - ".\setup.py"
+
+github_checks:
+    annotations: false
